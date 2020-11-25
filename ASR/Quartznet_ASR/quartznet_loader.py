@@ -29,7 +29,7 @@ class Quartznet_loader():
             self.config = OmegaConf.create(self.config)
             OmegaConf.set_struct(self.config, True)
 
-        EncDecCTCModel.set_model_restore_state(is_being_restored=True)
+        # EncDecCTCModel.set_model_restore_state(is_being_restored=True)
         instance = EncDecCTCModel(cfg=self.config)
 
         self.model_instance = instance

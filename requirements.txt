@@ -1,35 +1,18 @@
-# Requirements for Nemo NLP
-# boto3
-# h5py
-# matplotlib>=3.3.2
-# sentencepiece
-# torchtext
-# unidecode
-# youtokentome
-# numpy
-# tqdm>=4.41.0
-# rapidfuzz
-# gdown
-# megatron-lm==1.1.5
-# inflect
-
-# Requirements for Nemo ASR
+Django==3.1.3
+djangorestframework==3.12.2
+nemo-toolkit @ git+https://github.com/NVIDIA/NeMo.git@bd15a17163d25bcf919e31a97d87eefba531bcef
+omegaconf==2.0.5
+parallel_wavegan==0.4.8
+scipy==1.5.4
+torch==1.7.0
+megatron-lm==1.1.5
 braceexpand
-editdistance
+webdataset
 frozendict
 inflect
-kaldi-io
-librosa
-marshmallow
-packaging
-num2words
-ruamel.yaml
-soundfile
-sox
-torch-stft
 unidecode
-webdataset
-kaldi-python-io
-scipy
-pandas
 g2p_en
+pandas
+torch-stft
+editdistance
+espnet==0.9.3

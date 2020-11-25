@@ -30,7 +30,7 @@ class Bert_loader():
             self.config = OmegaConf.create(self.config)
             OmegaConf.set_struct(self.config, True)
 
-        PunctuationCapitalizationModel.set_model_restore_state(_MODEL_IS_RESTORED)
+        # PunctuationCapitalizationModel.super().__set_model_restore_state(_MODEL_IS_RESTORED)
         instance = PunctuationCapitalizationModel(cfg=self.config)
 
         self.model_instance = instance
