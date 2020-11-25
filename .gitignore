@@ -1,7 +1,12 @@
-ASR/Quartznet_ASR/Quartznet_Checkpoints
-ASR/Bert_NLP/Bert_Checkpoints
-ASR/TTS_ESPnet/TTS_Checkpoints
-ASR/TTS_ESPnet/Parallel_Wavegan
+ASR/Quartznet_ASR/Quartznet_Checkpoints/model_config.yaml
+ASR/Quartznet_ASR/Quartznet_Checkpoints/model_weights.ckpt
+ASR/Bert_NLP/Bert_Checkpoints/model_config.yaml
+ASR/Bert_NLP/Bert_Checkpoints/model_weights.ckpt
+ASR/TTS_ESPnet/TTS_Checkpoints/config.yaml
+ASR/TTS_ESPnet/TTS_Checkpoints/feats_stats.npz
+ASR/TTS_ESPnet/TTS_Checkpoints/Tacotron2-199epoch.pth
+ASR/TTS_ESPnet/Parallel_Wavegan/checkpoint-1000000steps.pkl
+ASR/TTS_ESPnet/Parallel_Wavegan/config.yml
 *.csv
 *.ckpt
 *.pkl
