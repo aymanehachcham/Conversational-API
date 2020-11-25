@@ -1,5 +1,8 @@
+ASR/Quartznet_ASR/Quartznet_Checkpoints
+ASR/Bert_NLP/Bert_Checkpoints
+ASR/TTS_ESPnet/TTS_Checkpoints
+ASR/TTS_ESPnet/Parallel_Wavegan
 *.csv
-*.yaml
 *.ckpt
 *.pkl
 *.npz
