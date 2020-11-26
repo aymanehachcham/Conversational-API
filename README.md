@@ -16,7 +16,7 @@ git clone git@github.com:Spotbills-AI-Department/Peer-API-V1.0.0.git
 conda env create -f peer_environment.yaml
 ```
 2. Manually using pip:
-* Set up a Python==3.6 virtual environment
+* Set up a `python=3.6` virtual environment
 * run: `pip install -r requirements.txt`
 
 ## Run the django API

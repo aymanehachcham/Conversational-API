@@ -14,47 +14,76 @@ import time
 import uuid
 
 # Load NLP and ASR Nemo alongside with Tacotron Model
-bert_punctuator = Bert_loader()
-quartznet_asr =Quartznet_loader()
-tacotron2_tts = TTS_loader()
+# bert_punctuator = Bert_loader()
+# quartznet_asr =Quartznet_loader()
+# tacotron2_tts = TTS_loader()
 
 
 #Create your views here.
 @api_view(['GET'])
 @never_cache
 def test_api(request):
+    # ----- YAML below for Swagger -----
+    """
+    description: Test for the Peer API.
+    parameters:
+      - name: None
+    """
+    ...
     return Response({'response':"You are successfully connected to Peer API"})
 
-@api_view(['POST'])
-def asr_conversion(request):
-    data = request.FILES['audio']
-    audio = ASRSound.objects.create(audio_file=data)
-    input = audio.audio_file.path
-    file = [input]
-    #json_manifest = quartznet_asr.create_output_manifest(audio.audio_file.path)
-    transcription = quartznet_asr.covert_to_text(file)
-    well_formated = bert_punctuator.punctuate(transcription)
+# @api_view(['POST'])
+# def asr_conversion(request):
+#     # ----- YAML below for Swagger -----
+#     """
+#     description: ASR Conversion from Quartznet model
+#     parameters:
+#       - name: audio FILE
+#         type: FILE
+#         required: true
+#         location: form
+#     :returns
+#         - text processed from an ASR model
+#     """
+#     data = request.FILES['audio']
+#     audio = ASRSound.objects.create(audio_file=data)
+#     input = audio.audio_file.path
+#     file = [input]
+#     #json_manifest = quartznet_asr.create_output_manifest(audio.audio_file.path)
+#     # transcription = quartznet_asr.covert_to_text(file)
+#     # well_formated = bert_punctuator.punctuate(transcription)
+#
+#     return Response({'Output': well_formated})
 
-    return Response({'Output': well_formated})
-
-@api_view(['POST'])
-def tts_transcription(request):
-    start_time = time.time()
-    text = request.data.get('text')
-    num_generated = uuid.uuid1()
-    print(' id num_generated for audio &&&&&&&&&&&&&&&&&&&&&&&&&&&')
-    path = "Audio/sound_output_%02d.wav" % num_generated
-    rate = 22050
-
-    output_audio = tacotron2_tts.tts_inference(text)
-    write(path, int(rate), output_audio)
-    audio = Sound.objects.create(audio_join=path, name='Sound_%02d' % num_generated, text_content=text)
-    audio.converted = True
-    audio.inference_time = str((time.time() - start_time))
-    audio.save()
-    ok = True
-    print("--- %s seconds ---" % (time.time() - start_time))
-    serializer = SoundSerializerOut(audio)
-    if ok == True:
-        return Response(serializer.data)
-    return Response({'response': "Sorry, we can't succeed to convert your text to sound!"})
+# @api_view(['POST'])
+# def tts_transcription(request):
+#     # ----- YAML below for Swagger -----
+#     """
+#     description: TTS Transcription from Tacotron2 and Parallel Wavegan models
+#     parameters:
+#       - name: text input
+#         type: string
+#         required: true
+#         location: form
+#     :returns
+#         - wav audio file interpreting the text with a female voice
+#     """
+#     start_time = time.time()
+#     text = request.data.get('text')
+#     num_generated = uuid.uuid1()
+#     print(' id num_generated for audio &&&&&&&&&&&&&&&&&&&&&&&&&&&')
+#     path = "Audio/sound_output_%02d.wav" % num_generated
+#     rate = 22050
+#
+#     output_audio = tacotron2_tts.tts_inference(text)
+#     write(path, int(rate), output_audio)
+#     audio = Sound.objects.create(audio_join=path, name='Sound_%02d' % num_generated, text_content=text)
+#     audio.converted = True
+#     audio.inference_time = str((time.time() - start_time))
+#     audio.save()
+#     ok = True
+#     print("--- %s seconds ---" % (time.time() - start_time))
+#     serializer = SoundSerializerOut(audio)
+#     if ok == True:
+#         return Response(serializer.data)
+#     return Response({'response': "Sorry, we can't succeed to convert your text to sound!"})

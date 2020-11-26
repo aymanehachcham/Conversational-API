@@ -4,7 +4,7 @@ nemo-toolkit @ git+https://github.com/NVIDIA/NeMo.git@bd15a17163d25bcf919e31a97d
 omegaconf==2.0.5
 parallel_wavegan==0.4.8
 scipy==1.5.4
-torch==1.7.0
+torch==1.6.0
 megatron-lm==1.1.5
 braceexpand
 webdataset

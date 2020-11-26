@@ -18,11 +18,23 @@ from django.urls import include
 from django.urls import path
 from django.views.static import serve
 from django.conf.urls import url
+from rest_framework.schemas import get_schema_view
+from django.views.generic import TemplateView
 
 from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'API/', include('API.urls')),
-    url(r'^API/Audio/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT})
+    url(r'^API/Audio/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+
+    path('swagger-doc/', get_schema_view(
+        title='Peer API V1.0.0',
+        description='Peer API serving ASR & TTS models for conversational AI purposes'), name='swagger-doc'),
+
+    path('docs/', TemplateView.as_view(
+        template_name='rest_framework/documentation.html',
+        extra_context={'schema_url':'openapi-schema'}
+    ), name='swagger-ui')
 ]
+
