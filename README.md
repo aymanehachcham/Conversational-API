@@ -19,6 +19,14 @@ conda env create -f peer_environment.yaml
 * Set up a `python=3.6` virtual environment
 * run: `pip install -r requirements.txt`
 
+### Download required Checkpoints and config files from Google Drive:
+* Google Drive link: [API Peer V1.0.0](https://drive.google.com/drive/u/0/folders/1tDeCoN1putp6o141Jq-iU_iywXrbDEk7):
+* Folder tree:
+    * Bert_Checkpoints -> inside *ASR/Bert_NLP*
+    * Parallel_Wavegan -> inside *ASR/TTS_ESPnet*
+    * Quartznet_Checkpoints -> inside *ASR/Quartznet_ASR*
+    * TTS_Checkpoints -> inside *ASR/TTS_ESPnet*
+    
 ## Run the django API
 `python manage.py runserver`
 * The api will be automatically serving at localhost, port 8000 if you are in linux
