@@ -20,21 +20,30 @@ from django.views.static import serve
 from django.conf.urls import url
 from rest_framework.schemas import get_schema_view
 from django.views.generic import TemplateView
-
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 from . import settings
+
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Peer API Documentation",
+      default_version='v1.0.0',
+      description="A django based REST API for serving ASR & TTS systems relating to Peer app",
+      terms_of_service="https://www.google.com/policies/terms/",
+      contact=openapi.Contact(email="aiteam@spotbills.com"),
+      license=openapi.License(name="MIT License"),
+   ),
+   public=True,
+   permission_classes=(permissions.AllowAny,),
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'API/', include('API.urls')),
     url(r'^API/Audio/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
-
-    path('swagger-doc/', get_schema_view(
-        title='Peer API V1.0.0',
-        description='Peer API serving ASR & TTS models for conversational AI purposes'), name='swagger-doc'),
-
-    path('docs/', TemplateView.as_view(
-        template_name='rest_framework/documentation.html',
-        extra_context={'schema_url':'openapi-schema'}
-    ), name='swagger-ui')
+    url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc')
 ]
 

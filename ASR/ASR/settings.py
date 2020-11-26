@@ -39,15 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework_swagger'
+    'drf_yasg'
 ]
 
 # Parser classes to help swagger, default ll be JSONParser only.
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ],
-
     # Parser classes priority-wise for Swagger
     'DEFAULT_PARSER_CLASSES': [
         'rest_framework.parsers.FormParser',

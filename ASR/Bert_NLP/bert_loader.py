@@ -38,4 +38,4 @@ class Bert_loader():
         self.model_instance.load_state_dict(torch.load(self.file_checkpoints, torch_device), False)
 
     def punctuate(self, query):
-        return self.model_instance.add_punctuation_capitalization(query)
+        return self.model_instance.add_punctuation_capitalization(query)[0]
