@@ -1,7 +1,7 @@
 # Conversational API
 ![schema](images/schema.png)
 
-A django based REST API for serving ASR & TTS systems relating to Peer app
+A django based REST API for serving ASR & TTS systems relating to Conversational Nvidia Neural Modules
 * This is the first version relased. 
 * A later version implementing TorchServe will be soon pushed.
 
