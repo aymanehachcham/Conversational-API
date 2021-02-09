@@ -13,6 +13,17 @@ TTS_CONFIG_FILE = "config.yaml"
 
 VOCODER_MODEL_WEIGHTS = "checkpoint-1000000steps.pkl"
 
+"""
+Handler class that manages Tacotron2 loading files and checkpoints,
+implementing all required methods to ease access for other external modules relying
+on it.
+
+- Loading yaml configuration files and checkpoints
+- Instantiating Text2Speech Espnet core module with specific data parameters
+- Define a tts_inference method that takes input text and generates corresponding human audible output.
+the voice implemented in this code is the female one. 
+"""
+
 class TTS_loader():
     def __init__(self, torch_device=None):
         if torch_device is None:

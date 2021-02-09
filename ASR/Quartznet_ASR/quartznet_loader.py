@@ -10,6 +10,15 @@ _MODEL_CONFIG = "model_config.yaml"
 _MODEL_WEIGHTS = "model_weights.ckpt"
 _MODEL_IS_RESTORED = False
 
+"""
+Handler class that manages QuartzNet loading files and checkpoints,
+implementing all required methods to ease access for other external modules relying
+on it.
+
+- Loading yaml configuration files and checkpoints
+- Instantiating EncDecCTCModel NeMo core module
+- Define a convert_to_text method that runs inference on saved audio files and returns transcribed text
+"""
 class Quartznet_loader():
     def __init__(self, torch_device=None):
         if torch_device is None:

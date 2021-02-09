@@ -26,27 +26,7 @@ tacotron2_tts = TTS_loader()
 ASR_SAMPLING_RATE = 22050
 
 
-
-@swagger_auto_schema(
-    method='get',
-    responses={200: 'You are successfully connected to Peer API'},
-    operation_description='Just for testing the connection to Peer API'
-)
-@api_view(['GET'])
-@never_cache
-def test_api(request):
-    return Response({'response':"You are successfully connected to Peer API"})
-
-
-asr_param = openapi.Parameter('audio', openapi.TYPE_FILE, description="audio to be converted into text", type=openapi.TYPE_FILE)
-asr_response = openapi.Response('JSON response with metadata and Output text', ASROutputSeralizer)
-@swagger_auto_schema(
-    method='post',
-    request_body=ASROutputSeralizer,
-    manual_parameters=[asr_param],
-    responses={200: asr_response},
-    operation_description='Returns Quartznet inference on audio sample data'
-)
+# Post method for ASR transcription
 @api_view(['POST'])
 def asr_conversion(request):
     data = request.FILES['audio']
@@ -69,15 +49,7 @@ def asr_conversion(request):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-tts_param = openapi.Parameter('text', openapi.TYPE_STRING, description="text to be vocally emulated", type=openapi.TYPE_STRING)
-tts_response = openapi.Response('JSON response with metadata and generated output audio', TTSOutputSerializer)
-@swagger_auto_schema(
-    method='post',
-    request_body=TTSOutputSerializer,
-    manual_parameters=[tts_param],
-    responses={200: tts_response},
-    operation_description='Returns Tacotron2 inference on text sample data'
-)
+# Post method for TTS audio generation
 @api_view(['POST'])
 def tts_transcription(request):
     text = request.data.get('text')
@@ -100,12 +72,7 @@ def tts_transcription(request):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-@swagger_auto_schema(
-    method='delete',
-    responses={200: 'Media folders were cleaned up!!'},
-    operation_description='Cleans up media folders'
-)
-@api_view(['DELETE'])
+# Empty the local folder when they get full of messy audio files
 def empty_folder(request):
     folder_input = 'Audio/'
     for filename in os.listdir(folder_input):

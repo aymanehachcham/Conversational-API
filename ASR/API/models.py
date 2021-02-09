@@ -1,8 +1,7 @@
 import uuid
 from django.db import models
-from .utils import get_tts_media, get_asr_media
 
-# Create your models here.
+# ASR Text Model for handling the serialized JSON response on ASR requests.
 class ASRText(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255,null=True, blank=True)
@@ -24,6 +23,7 @@ class ASRInputSound(models.Model):
     audio_file = models.FileField(upload_to='ASR_Input/', null=True, blank=True)
 
 
+# TTS Sound Model for handling the serialized JSON response on TTS requests.
 class TTSSound(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255,null=True, blank=True)

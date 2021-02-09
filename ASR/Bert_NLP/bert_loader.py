@@ -10,7 +10,14 @@ _MODEL_CONFIG = "model_config.yaml"
 _MODEL_WEIGHTS = "model_weights.ckpt"
 _MODEL_IS_RESTORED = True
 
-
+"""
+Handler class that manages Bert loading files and checkpoints,
+implementing all required methods to ease access for other external modules relying
+on it.
+- Loading yaml configuration files and checkpoints
+- Instantiating PunctuationCapitalization NeMo core module
+- Define a punctuation method that takes raw text and yields readable text
+"""
 class Bert_loader():
     def __init__(self, torch_device=None):
         if torch_device is None:
