@@ -1,4 +1,4 @@
-# PEER DJANGO-API
+# Conversational API
 ![schema](images/schema.png)
 
 A django based REST API for serving ASR & TTS systems relating to Peer app
