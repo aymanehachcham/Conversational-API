@@ -1,5 +1,5 @@
 # PEER DJANGO-API
-![peer logo](images/peer_logo.png)
+![schema](images/schema.png)
 
 A django based REST API for serving ASR & TTS systems relating to Peer app
 * This is the first version relased. 
@@ -8,7 +8,7 @@ A django based REST API for serving ASR & TTS systems relating to Peer app
 ## Installation
 * Clone this repository:
 ```
-git clone git@github.com:Spotbills-AI-Department/Peer-API-V1.0.0.git
+git clone https://github.com/aymanehachcham/Conversational-API.git
 ```
 * Set up the virtual environment and all required dependencies either by:
 1. Using [Anaconda](https://docs.anaconda.com/anaconda/install/):
@@ -20,7 +20,7 @@ conda env create -f peer_environment.yaml
 * run: `pip install -r requirements.txt`
 
 ### Download required Checkpoints and config files from Google Drive:
-* Google Drive link: [API Peer V1.0.0](https://drive.google.com/drive/u/0/folders/1tDeCoN1putp6o141Jq-iU_iywXrbDEk7):
+* Google Drive link: [Conversational-API](https://drive.google.com/drive/u/3/folders/1ij8uSQSUu0nnOFKdoTsd9Aw65aBb55PY):
 * Folder tree:
     * Bert_Checkpoints -> inside *ASR/Bert_NLP*
     * Parallel_Wavegan -> inside *ASR/TTS_ESPnet*
